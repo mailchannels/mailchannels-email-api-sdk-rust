@@ -1,0 +1,32 @@
+[package]
+name = "mailchannels-email-api"
+version = "0.1.0"
+authors = ["MailChannels <dev@mailchannels.com>"]
+description = "Server-side client for the MailChannels Email API"
+license = "MIT"
+homepage = "https://docs.mailchannels.com/email-api/overview"
+keywords = ["mailchannels", "email", "transactional", "api"]
+categories = ["api-bindings", "email"]
+include = ["src/**", "docs/**", "examples/**", "README.md", "LICENSE"]
+# Candidate only: remove after release gates and company publisher access are ready.
+publish = false
+edition = "2021"
+rust-version = "1.88"
+
+[dependencies]
+serde = { version = "^1.0", features = ["derive"] }
+serde_with = { version = "^3.8", default-features = false, features = ["base64", "std", "macros"] }
+serde_json = "^1.0"
+serde_repr = "^0.1"
+url = "^2.5"
+chrono = { version = "^0.4",  features = ["serde"] }
+reqwest = { version = "^0.13", default-features = false, features = ["json", "multipart", "query", "form"] }
+
+[features]
+default = ["rustls"]
+native-tls = ["reqwest/native-tls"]
+rustls = ["reqwest/rustls"]
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+rustls = "0.23"
