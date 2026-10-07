@@ -34,3 +34,19 @@ jobs:
       - run: docker run --rm -v "$PWD:/sdk" -w /sdk visibility-rust-checks:1.90.0 cargo package --locked
       - run: docker build -f scripts/RustAudit.Dockerfile -t visibility-rust-audit:0.22.2 scripts
       - run: docker run --rm -v "$PWD:/sdk:ro" -w /sdk visibility-rust-audit:0.22.2 cargo audit
+
+  desktop-native-tls:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2025, macos-15]
+        rust: ['1.88.0', '1.99.0']
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python -m pip install cryptography==45.0.3
+      - run: rustup toolchain install ${{ matrix.rust }} --profile minimal
+      - run: python scripts/test-desktop.py --toolchain ${{ matrix.rust }}
