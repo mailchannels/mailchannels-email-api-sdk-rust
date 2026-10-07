@@ -10,7 +10,7 @@ Clone this repository and use it as a local Cargo path dependency. `examples/dry
 
 Default transport uses HTTPS, certificate verification, 10-second connect and 30-second request timeouts, with no redirects or automatic retries. A transport failure can leave delivery outcome unknown; do not automatically resend. `send_email` calls /send; `queue_email` calls /send-async. Response variants follow HTTP status. Inspect per-personalization results: a successful HTTP status does not guarantee every message succeeded. Models preserve API snake_case fields.
 
-Debug output redacts models, responses and configuration; explicit fields and JSON serialization still expose content. The low-level Configuration and custom HTTP client are trusted application settings. Default rustls and optional native-tls are covered by the Linux x86_64 fixture suite; other platforms remain unvalidated. Endpoint fixtures are not live-provider conformance tests.
+Debug output redacts models, responses and configuration; explicit fields and JSON serialization still expose content. The low-level Configuration and custom HTTP client are trusted application settings. Default rustls and optional native-tls are covered by the Linux x86_64 fixture suite. Native TLS also passes the same 56 tests on Windows Server 2025 x86_64 and macOS 15 arm64 with Rust 1.88 and 1.99. Other platform/backend combinations remain unvalidated. Endpoint fixtures are not live-provider conformance tests.
 
 ## Develop
 
@@ -27,7 +27,7 @@ System OpenSSL updates remain the deployment operator's responsibility.
 
 Run `bash scripts/regenerate.sh` to regenerate src/docs/Cargo.toml from the pinned spec and custom templates, then format. Review `git diff`. Names and the int64 resend-batch-ID hint are explicit in codegen. Templates carry upstream Apache-2.0 notices; the SDK is MIT. Keep template changes and regenerated source together.
 
-CI tests both TLS backends on Rust 1.88, 1.90 and 1.99 and checks regeneration, strict library Clippy, packaging and RustSec advisories. No CI job uses provider credentials or publishes a package. Before release, establish company crates.io ownership, review API/metadata, verify CI and registry installation, and remove publish=false in the source template.
+CI tests both TLS backends on Linux with Rust 1.88, 1.90 and 1.99, plus native TLS on Windows Server 2025 and macOS 15 with Rust 1.88 and 1.99. Desktop jobs run `python scripts/test-desktop.py --toolchain VERSION`: dependency fetch requires network access, Cargo tests run offline against loopback fixtures, and no system trust store is modified. Desktop jobs do not disable host networking. CI also checks regeneration, strict library Clippy, packaging and RustSec advisories. No CI job uses provider credentials or publishes a package. Before release, establish company crates.io ownership, review API/metadata, verify CI and registry installation, and remove publish=false in the source template.
 
 ## Generated API reference
 
