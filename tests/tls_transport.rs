@@ -43,6 +43,8 @@ async fn probe(label: &str, trust: bool, accepted: bool) {
                 Err(e) => panic!("TLS fixture accept failed: {e}"),
             }
         };
+        // Use blocking I/O with deadlines regardless of listener inheritance.
+        tcp.set_nonblocking(false).unwrap();
         tcp.set_read_timeout(Some(Duration::from_secs(5))).unwrap();
         tcp.set_write_timeout(Some(Duration::from_secs(5))).unwrap();
         let connection = rustls::ServerConnection::new(Arc::new(server_config)).unwrap();
