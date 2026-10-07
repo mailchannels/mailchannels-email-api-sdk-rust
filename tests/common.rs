@@ -23,8 +23,13 @@ pub fn fixture(status: u16, body: &'static str) -> (Configuration, thread::JoinH
                 Err(e) => panic!("Fixture accept failed: {e}"),
             }
         };
+        // Accepted sockets can inherit nonblocking mode on Windows and macOS.
+        stream.set_nonblocking(false).unwrap();
         stream
             .set_read_timeout(Some(std::time::Duration::from_secs(5)))
+            .unwrap();
+        stream
+            .set_write_timeout(Some(std::time::Duration::from_secs(5)))
             .unwrap();
         let mut request = Vec::new();
         let mut buffer = [0u8; 4096];
