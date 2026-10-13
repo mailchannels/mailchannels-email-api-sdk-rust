@@ -4,5 +4,7 @@
   "packageVersion": "0.1.0",
   "supportMultipleResponses": true,
   "hideGenerationTimestamp": true,
-  "reqwestDefaultFeatures": "rustls"
+  "reqwestDefaultFeatures": "rustls",
+  "repositoryUrl": "https://github.com/mailchannels/mailchannels-email-api-sdk-rust",
+  "documentationUrl": "https://docs.rs/mailchannels-email-api"
 }
