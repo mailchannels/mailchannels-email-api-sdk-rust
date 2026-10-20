@@ -43,6 +43,9 @@ async fn probe(label: &str, trust: bool, accepted: bool) {
                 Err(e) => panic!("TLS fixture accept failed: {e}"),
             }
         };
+        // Accepted sockets can inherit nonblocking mode on Windows and macOS. A
+        // WouldBlock read would return an empty request, letting rejection tests pass.
+        tcp.set_nonblocking(false).unwrap();
         tcp.set_read_timeout(Some(Duration::from_secs(5))).unwrap();
         tcp.set_write_timeout(Some(Duration::from_secs(5))).unwrap();
         let connection = rustls::ServerConnection::new(Arc::new(server_config)).unwrap();
