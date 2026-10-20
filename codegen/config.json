@@ -5,6 +5,5 @@
   "supportMultipleResponses": true,
   "hideGenerationTimestamp": true,
   "reqwestDefaultFeatures": "rustls",
-  "repositoryUrl": "https://github.com/mailchannels/mailchannels-email-api-sdk-rust",
-  "documentationUrl": "https://docs.rs/mailchannels-email-api"
+  "repositoryUrl": "https://github.com/mailchannels/mailchannels-email-api-sdk-rust"
 }
