@@ -10,7 +10,7 @@ Clone this repository and use it as a local Cargo path dependency. `examples/dry
 
 Default transport uses HTTPS, certificate verification, 10-second connect and 30-second request timeouts, with no redirects or automatic retries. A transport failure can leave delivery outcome unknown; do not automatically resend. `send_email` calls /send; `queue_email` calls /send-async. Response variants follow HTTP status. Inspect per-personalization results: a successful HTTP status does not guarantee every message succeeded. Models preserve API snake_case fields.
 
-Debug output redacts models, responses and configuration; explicit fields and JSON serialization still expose content. The low-level Configuration and custom HTTP client are trusted application settings. Default rustls and optional native-tls are covered by the Linux x86_64 fixture suite. Native TLS also passes the same 56 tests on Windows Server 2025 x86_64 and macOS 15 arm64 with Rust 1.88 and 1.99. Other platform/backend combinations remain unvalidated. Endpoint fixtures are not live-provider conformance tests.
+Debug output redacts models, responses and configuration; explicit fields and JSON serialization still expose content. The low-level Configuration and custom HTTP client are trusted application settings. Default rustls and optional native-tls are covered by the Linux x86_64 fixture suite. Native TLS also passes the same fixture suite on Windows Server 2025 x86_64 and macOS 15 arm64 with Rust 1.88 and 1.99. Other platform/backend combinations remain unvalidated. Endpoint fixtures are not live-provider conformance tests.
 
 ## Develop
 
