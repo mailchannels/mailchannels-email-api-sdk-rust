@@ -12,6 +12,7 @@ include = ["src/**", "docs/**", "examples/**", "README.md", "LICENSE"]
 publish = false
 edition = "2021"
 rust-version = "1.88"
+repository = "https://github.com/mailchannels/mailchannels-email-api-sdk-rust"
 
 [dependencies]
 serde = { version = "^1.0", features = ["derive"] }
