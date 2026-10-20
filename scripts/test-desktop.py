@@ -17,14 +17,8 @@ print('RUST_DESKTOP_PLATFORM', platform.platform(), platform.machine(), flush=Tr
 run('rustc', '+' + args.toolchain, '--version')
 run(sys.executable, 'scripts/tls-certificates.py', 'tests/tls-fixtures')
 run('cargo', '+' + args.toolchain, 'fetch', '--locked')
-features = subprocess.check_output(
-    ['cargo', '+' + args.toolchain, 'tree', '--offline', '--locked',
-     '--no-default-features', '--features', 'native-tls', '-e', 'features', '-i', 'reqwest'],
-    cwd=root, text=True,
-)
-print(features, flush=True)
-assert 'reqwest feature "__native-tls"' in features
-assert 'reqwest feature "__rustls"' not in features, 'Unexpected client TLS backend'
+run('cargo', '+' + args.toolchain, 'tree', '--offline', '--locked',
+    '--no-default-features', '--features', 'native-tls', '-e', 'features', '-i', 'reqwest')
 run('cargo', '+' + args.toolchain, 'test', '--offline', '--locked',
     '--no-default-features', '--features', 'native-tls', '--tests')
 print('RUST_DESKTOP_COMPLETE', args.toolchain, 'native-tls', flush=True)

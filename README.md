@@ -19,8 +19,7 @@ Install Python dependencies `PyYAML==6.0.3` and `cryptography==45.0.3`, plus Doc
 Use `SDK_TLS_FEATURE=native-tls bash scripts/test.sh` to run the same suite through
 OpenSSL. This builds a test image with the system OpenSSL headers and pkg-config;
 the image build and dependency fetch require network access, but test execution
-does not. The runner disables default features and records the reqwest feature
-graph to keep backend checks distinct. Cargo features are additive in downstream
+does not. The runner disables default features to keep backend checks distinct. Cargo features are additive in downstream
 applications: enabling native-tls without disabling this crate's default features
 can enable both backends. Review your application's full dependency graph.
 System OpenSSL updates remain the deployment operator's responsibility.

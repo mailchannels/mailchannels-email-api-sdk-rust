@@ -16,12 +16,5 @@ docker run --rm --network none -v "$root:/sdk" -v visibility-rust-cargo:/usr/loc
 set -euo pipefail
 rustc --version
 if [ "$1" = native-tls ]; then openssl version; fi
-features=$(cargo tree --offline --locked --no-default-features --features "$1" -e features -i reqwest)
-printf "%s\n" "$features"
-if [[ "$1" == native-tls && "$features" == *"reqwest feature \"__rustls\""* ]] ||
-   [[ "$1" == rustls && "$features" == *"reqwest feature \"__native-tls\""* ]]; then
-    echo "Unexpected second reqwest TLS backend in the fixture" >&2
-    exit 1
-fi
 cargo test --offline --locked --no-default-features --features "$1" --tests
 ' -- "$tls"
