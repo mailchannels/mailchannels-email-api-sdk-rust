@@ -1,10 +1,10 @@
-# MailChannels Rust Email API SDK — unreleased
+# MailChannels Rust Email API SDK
 
-Server-side Rust client covering 42 MailChannels Email API operations. Requires Rust 1.88 or newer. This candidate is not published to crates.io; its manifest disables publishing. Maintained by MailChannels; support: dev@mailchannels.com. MIT licensed.
+Server-side Rust client covering 42 MailChannels Email API operations. Requires Rust 1.88 or newer. Maintained by MailChannels; support: dev@mailchannels.com. MIT licensed.
 
-## Try the candidate
+## Install
 
-Clone this repository and use it as a local Cargo path dependency. `examples/dry_run.rs` demonstrates the public constructors and sending API. To run it, set MAILCHANNELS_API_KEY, MAILCHANNELS_SENDER and MAILCHANNELS_RECIPIENT securely in your environment, then run `cargo run --example dry_run`. It calls the provider with dry-run enabled; it does not send email. Sender-domain setup and account restrictions still apply. Never embed API keys in browser/mobile code.
+Add it from crates.io with `cargo add mailchannels-email-api`. `examples/dry_run.rs` demonstrates the public constructors and sending API. To run it, set MAILCHANNELS_API_KEY, MAILCHANNELS_SENDER and MAILCHANNELS_RECIPIENT securely in your environment, then run `cargo run --example dry_run`. It calls the provider with dry-run enabled; it does not send email. Sender-domain setup and account restrictions still apply. Never embed API keys in browser/mobile code.
 
 ## Behavior
 
@@ -26,13 +26,13 @@ System OpenSSL updates remain the deployment operator's responsibility.
 
 Run `bash scripts/regenerate.sh` to regenerate src/docs/Cargo.toml from the pinned spec and custom templates, then format. Review `git diff`. Names and the int64 resend-batch-ID hint are explicit in codegen. Templates carry upstream Apache-2.0 notices; the SDK is MIT. Keep template changes and regenerated source together.
 
-CI tests both TLS backends on Linux with Rust 1.88, 1.90 and 1.99, plus native TLS on Windows Server 2025 and macOS 15 with Rust 1.88 and 1.99. Desktop jobs run `python scripts/test-desktop.py --toolchain VERSION`: dependency fetch requires network access, Cargo tests run offline against loopback fixtures, and no system trust store is modified. Desktop jobs do not disable host networking. CI also checks regeneration, strict library Clippy, packaging and RustSec advisories. No CI job uses provider credentials or publishes a package. Before release, establish company crates.io ownership, review API/metadata, verify CI and registry installation, and remove publish=false in the source template. The first release is published manually by a company crates.io owner; later releases can use crates.io Trusted Publishing from a reviewed GitHub Actions workflow once it is configured in the crate's crates.io settings.
+CI tests both TLS backends on Linux with Rust 1.88, 1.90 and 1.99, plus native TLS on Windows Server 2025 and macOS 15 with Rust 1.88 and 1.99. Desktop jobs run `python scripts/test-desktop.py --toolchain VERSION`: dependency fetch requires network access, Cargo tests run offline against loopback fixtures, and no system trust store is modified. Desktop jobs do not disable host networking. CI also checks regeneration, strict library Clippy, packaging and RustSec advisories. No CI job uses provider credentials or publishes a package. Releases are published to crates.io by a MailChannels crate owner; later releases can use crates.io Trusted Publishing from a reviewed GitHub Actions workflow once it is configured in the crate's crates.io settings.
 
 ## Generated API reference
 
-# Unreleased SDK candidate
+# Support
 
-This package has not been published. Support: dev@mailchannels.com. Licensed under MIT; see LICENSE.
+Support: dev@mailchannels.com. Licensed under MIT; see LICENSE.
 
 # Rust API client for mailchannels-email-api
 
