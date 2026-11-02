@@ -1,6 +1,6 @@
 # MailChannels Rust Email API SDK
 
-Server-side Rust client covering 42 MailChannels Email API operations. Requires Rust 1.88 or newer. Maintained by MailChannels; support: dev@mailchannels.com. MIT licensed.
+Server-side Rust client covering 42 MailChannels Email API operations. Requires Rust 1.88 or newer. Maintained by MailChannels; see Support below. MIT licensed.
 
 ## Install
 
@@ -28,11 +28,17 @@ Run `bash scripts/regenerate.sh` to regenerate src/docs/Cargo.toml from the pinn
 
 CI tests both TLS backends on Linux with Rust 1.88, 1.90 and 1.99, plus native TLS on Windows Server 2025 and macOS 15 with Rust 1.88 and 1.99. Desktop jobs run `python scripts/test-desktop.py --toolchain VERSION`: dependency fetch requires network access, Cargo tests run offline against loopback fixtures, and no system trust store is modified. Desktop jobs do not disable host networking. CI also checks regeneration, strict library Clippy, packaging and RustSec advisories. No CI job uses provider credentials or publishes a package. Releases are published to crates.io by a MailChannels crate owner; later releases can use crates.io Trusted Publishing from a reviewed GitHub Actions workflow once it is configured in the crate's crates.io settings.
 
+## Support
+
+This project is supported by the MailChannels team on a best-effort basis. The best way to get support is to file an issue on GitHub: https://github.com/mailchannels/mailchannels-email-api-sdk-rust/issues
+
+If you are a MailChannels customer and have a problem with the operation of the MailChannels service, you can get support at https://support.mailchannels.com/
+
 ## Generated API reference
 
-# Support
+# License
 
-Support: dev@mailchannels.com. Licensed under MIT; see LICENSE.
+Licensed under MIT; see LICENSE.
 
 # Rust API client for mailchannels-email-api
 
