@@ -1,6 +1,8 @@
 # MailChannels Rust Email API SDK
 
-Server-side Rust client covering 42 MailChannels Email API operations. Requires Rust 1.88 or newer. Maintained by MailChannels; see Support below. MIT licensed.
+A Rust library for MailChannels Email API. Send transactional email, such as sign-up confirmations, password resets, receipts and notifications, from your Rust app, register webhooks for delivery events and fetch the public key that signs them, and manage sub-accounts when your users send through your app.
+
+This server-side client covers 42 Email API operations. Requires Rust 1.88 or newer. Maintained by MailChannels; see Support below. MIT licensed.
 
 ## Install
 
