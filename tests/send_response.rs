@@ -38,6 +38,7 @@ async fn accepted_send_retains_request_id_and_partial_results() {
     let request = handle.join().unwrap();
     assert!(request.starts_with("POST /send HTTP/1.1"));
     assert!(request.to_lowercase().contains("x-api-key: fixture-key"));
+    assert!(request.to_lowercase().contains(&format!("user-agent: mailchannels-rust/{}\r\n", env!("CARGO_PKG_VERSION"))));
 }
 #[tokio::test]
 async fn dry_run_uses_200_model_and_query() {

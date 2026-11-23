@@ -119,7 +119,8 @@ impl Default for Configuration {
     fn default() -> Self {
         Configuration {
             base_path: "{{{basePath}}}".to_owned(),
-            user_agent: {{#httpUserAgent}}Some("{{{.}}}".to_owned()){{/httpUserAgent}}{{^httpUserAgent}}Some("OpenAPI-Generator/{{{version}}}/rust".to_owned()){{/httpUserAgent}},
+            // Integrations put their own token first: `config.user_agent = Some(format!("mailchannels-x/1.0 {}", ...))`.
+            user_agent: Some(concat!("mailchannels-rust/", env!("CARGO_PKG_VERSION")).to_owned()),
             client: transport_builder().build().expect("MailChannels TLS client initialization failed"),
             {{^supportTokenSource}}
             basic_auth: None,
