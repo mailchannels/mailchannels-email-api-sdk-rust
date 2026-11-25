@@ -1,7 +1,7 @@
 {
   "library": "reqwest",
   "packageName": "mailchannels-email-api",
-  "packageVersion": "0.1.0",
+  "packageVersion": "0.1.1",
   "supportMultipleResponses": true,
   "hideGenerationTimestamp": true,
   "reqwestDefaultFeatures": "rustls",

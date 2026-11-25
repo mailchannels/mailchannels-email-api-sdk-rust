@@ -1,6 +1,6 @@
 [package]
 name = "mailchannels-email-api"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["MailChannels <dev@mailchannels.com>"]
 description = "Server-side client for the MailChannels Email API"
 license = "MIT"
